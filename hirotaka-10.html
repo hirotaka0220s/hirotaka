@@ -2,7 +2,7 @@
 <html>
 <body>
 <!--このdivタグの中に地図を表示-->
-<div id="map" style="width:400px; height:300px"></div>
+<div id="map" style="width:700px; height:600px"></div>
 <!--歩行行データの入力-->
 <form name="myform">
      <input name="myfile" type="file" />
@@ -49,7 +49,7 @@
 //Y.MapオブジェクトのdrawMap()メソッドを使用して、初期化した地図を表示する
 //引数は左から順に....
 //1.中心の緯度経度 2.ズームレベル（数字大　=>　ズーム大） 3.レイヤーセットID（表示する地図の種類）を意味する
-            ymap.drawMap(new Y.LatLng(previousLat, previousLon), 18, Y.LayerSetId.NORMAL);                  
+            ymap.drawMap(new Y.LatLng(previousLat, previousLon), 19, Y.LayerSetId.NORMAL);                  
 //初期の緯度と経度をlatlngs配列にpush
             latlngs.push(new Y.LatLng(previousLat, previousLon));
 //出発以降は、直前の緯度と経度を、現在の緯度と経度と、比較して距離を出して、
@@ -90,18 +90,18 @@
                           previousLon = lon;
                           console. log(' im here');
 //                          break;
-//スピードが0.5km/hより速く1km/h以下の場合青色の線を引く
+//スピードが0.5km/hより速く1km/h以下の場合赤色の線を引く
 　　　　　　  }　else if ((spd > 0.5) && (spd <= 1)) {
-                           var style = new Y.Style("0000FF", 8, 1);
+                           var style = new Y.Style("FF0000", 8, 1);
                            var polyline = new Y.Polyline(latlngs, {strokeStyle: style});
                            ymap.addFeature(polyline);
                            previousLat = lat;
                            previousLon = lon;
                            console.log('im here');
 //                           break;
-//スピードが1km/hより速く1.5km/h以下の場合黄色の線を引く                           
+//スピードが1km/hより速く1.5km/h以下の場合赤色の線を引く                           
               }　else if ((spd > 1) && (spd <= 1.5)) {
-                           var style = new Y.Style("FFFF00", 6, 1);
+                           var style = new Y.Style("FF0000", 6, 1);
                            var polyline = new Y.Polyline(latlngs, {strokeStyle: style});
                            ymap.addFeature(polyline);
                            previousLat = lat;
@@ -109,7 +109,7 @@
                            console.log('im here');
 //                           break;             
               } else if (spd > 1.5){
-                           var style = new Y.Style("FFFFFF", 6, 1);
+                           var style = new Y.Style("FF0000", 6, 1);
                            var polyline = new Y.Polyline(latlngs, {strokeStyle: style});
                            ymap.addFeature(polyline);
                            previousLat = lat;
@@ -127,4 +127,3 @@
 <!--displayMapを実行する-->
     <script>displayMap()</script>       
 </body>
-</html>
